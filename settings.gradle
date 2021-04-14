@@ -1,0 +1,3 @@
+rootProject.name='workman'
+include ':app'
+include ':library:workmanager-ext'

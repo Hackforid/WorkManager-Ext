@@ -1,0 +1,23 @@
+
+def deps = [:]
+def versions = [:]
+
+ext.versions = versions
+ext.deps = deps
+
+
+// base
+versions.compileSdkVersion = 28
+versions.buildToolsVersion = "28.0.3"
+versions.minSdkVersion = 17
+versions.targetSdkVersion = 26
+
+
+versions.agp = "3.4.2"
+
+versions.kotlin = "1.4.10"
+versions.asuka = "0.2.7"
+
+versions.fresco = "1.13.0"
+
+versions.workmanager = "2.5.0"
