@@ -1,5 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     apply from: rootProject.file("versions.gradle")
     repositories {
@@ -28,15 +27,5 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.smilehacker.workmanager'
-            artifactId = 'workmanager-ext'
-            version = '0.0.1'
-        }
-    }
 }
 

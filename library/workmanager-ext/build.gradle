@@ -8,8 +8,6 @@ android {
     defaultConfig {
         minSdkVersion versions.minSdkVersion
         targetSdkVersion versions.targetSdkVersion
-        versionCode 1
-        versionName VERSION_NAME
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -41,3 +39,18 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:$versions.workmanager"
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = LIB_GROUP_ID
+                artifactId = LIB_NAME
+                version = LIB_VERSION
+            }
+        }
+    }
+
+
+}
