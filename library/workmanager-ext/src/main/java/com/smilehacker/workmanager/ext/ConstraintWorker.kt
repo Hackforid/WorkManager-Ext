@@ -20,20 +20,16 @@ abstract class ConstraintWorker(appContext: Context, params: WorkerParameters) :
     final override suspend fun doWork(): Result {
         val constrains = needConstraints()
 
-        Log.i("Sample", "start work at ${Thread.currentThread().name}")
         if (ConstraintManager.isConstrained(constrains)) {
-            Log.i("Sample", "is constrained, do work.")
             return doActualWork()
         }
 
 
-        Log.i("Sample", "register worker")
         ConstraintManager.registerWorker(this@ConstraintWorker, constrains)
 
         mLock.withLock {
         }
 
-        Log.i("Sample", "condition unlocked at ${Thread.currentThread().name}")
         return doActualWork()
     }
 
