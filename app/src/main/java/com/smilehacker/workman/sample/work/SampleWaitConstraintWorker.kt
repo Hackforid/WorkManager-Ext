@@ -11,7 +11,7 @@ import kotlinx.coroutines.delay
 /**
  * Created by quan.zhou on 2021/4/14.
  */
-class SampleConstraintWorker(appContext: Context, params: WorkerParameters) :
+class SampleWaitConstraintWorker(appContext: Context, params: WorkerParameters) :
     ConstraintWorker(appContext, params) {
 
     override fun needConstraints(): ConstraintMap {
@@ -19,8 +19,8 @@ class SampleConstraintWorker(appContext: Context, params: WorkerParameters) :
     }
 
     override suspend fun doActualWork(): Result {
+        delay(2000)
         Log.i("Sample", "do actual work at ${Thread.currentThread().name} in " + this.javaClass.name)
-        delay(1000)
         return Result.success()
     }
 }

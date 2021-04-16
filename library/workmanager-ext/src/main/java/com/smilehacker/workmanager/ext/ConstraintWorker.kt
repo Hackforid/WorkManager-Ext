@@ -1,11 +1,10 @@
 package com.smilehacker.workmanager.ext
 
 import android.content.Context
-import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.smilehacker.workmanager.ext.constraint.ConstraintManager
-import com.smilehacker.workmanager.ext.constraint.ConstraintPair
+import com.smilehacker.workmanager.ext.constraint.ConstraintMap
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -33,7 +32,7 @@ abstract class ConstraintWorker(appContext: Context, params: WorkerParameters) :
         return doActualWork()
     }
 
-    abstract fun needConstraints(): List<ConstraintPair>
+    abstract fun needConstraints(): ConstraintMap
 
     abstract suspend fun doActualWork(): Result
 

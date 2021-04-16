@@ -11,10 +11,9 @@ import com.smilehacker.workmanager.ext.constraint.ConstraintController;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import kotlin.Pair;
 import kotlin.coroutines.Continuation;
 
 /**
@@ -28,8 +27,8 @@ public class JavaWorker extends ConstraintWorker {
 
     @NotNull
     @Override
-    public List<Pair<Class<? extends ConstraintController<?>>, ?>> needConstraints() {
-        return Arrays.asList(new Pair<>(OnForegroundConstraintController.class, false));
+    public Map<Class<? extends ConstraintController<?>>, ?> needConstraints() {
+        return new HashMap<Class<? extends ConstraintController<?>>, Object>() {{ put(OnForegroundConstraintController.class, false); }};
     }
 
 

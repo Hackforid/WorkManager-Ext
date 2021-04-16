@@ -6,10 +6,7 @@ import android.widget.Button
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.smilehacker.workman.sample.work.JavaWorker
-import com.smilehacker.workman.sample.work.OnForegroundConstraintController
-import com.smilehacker.workman.sample.work.SampleConstraintWorker
-import com.smilehacker.workman.sample.work.SampleWorker
+import com.smilehacker.workman.sample.work.*
 import com.smilehacker.workmanager.ext.constraint.ConstraintManager
 
 class MainActivity : AppCompatActivity() {
@@ -41,6 +38,10 @@ class MainActivity : AppCompatActivity() {
 
         WorkManager.getInstance(this)
             .enqueue(request2)
+
+
+        WorkManager.getInstance(this)
+            .enqueue(OneTimeWorkRequestBuilder<SampleWaitConstraintWorker>().build())
     }
 
     private fun initWorker() {
