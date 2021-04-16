@@ -12,10 +12,6 @@ buildscript {
     }
 }
 
-plugins {
-    id 'maven-publish'
-}
-
 allprojects {
     apply from: rootProject.file("versions.gradle")
     repositories {
