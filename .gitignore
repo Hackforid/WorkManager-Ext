@@ -9,7 +9,6 @@ target
 out
 classes
 gen-external-apklibs
-*.properties
 .DS_Store
 .gradle/
 build/
@@ -17,3 +16,4 @@ build/
 *.hprof
 infer-out/
 !gradle-wrapper.properties
+local.properties
