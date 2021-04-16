@@ -16,26 +16,14 @@ android {
 
     }
 
-    signingConfigs {
-        myConfig {
-            storeFile file("mini.keystore")
-            storePassword "111111"
-            keyAlias "demo.alias"
-            keyPassword "111111"
-        }
-    }
-
 
     buildTypes {
         debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "int", "SAMPLE_VERSION", "" + getFileVersion("src/main/assets/sample.apk")
         }
         release {
             minifyEnabled true
             shrinkResources true
-            signingConfig signingConfigs.myConfig
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -70,10 +58,5 @@ dependencies {
 
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
-}
-
-def getFileVersion(String path) {
-    def file = file(path)
-    return file.length()
 }
 
