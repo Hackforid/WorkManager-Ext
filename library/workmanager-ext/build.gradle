@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply from: rootProject.file('gradle/maven.gradle')
 
 android {
     compileSdkVersion versions.compileSdkVersion
@@ -39,18 +40,3 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:$versions.workmanager"
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-
-                groupId = LIB_GROUP_ID
-                artifactId = LIB_NAME
-                version = LIB_VERSION
-            }
-        }
-    }
-
-
-}

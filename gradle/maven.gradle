@@ -1,0 +1,23 @@
+apply plugin: 'maven'
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = LIB_GROUP_ID
+                artifactId = LIB_NAME
+                version = LIB_VERSION
+
+                artifact sourceJar
+            }
+        }
+    }
+
+}
+
+task sourceJar(type: Jar) {
+    classifier "sources"
+    from android.sourceSets.main.java.srcDirs
+}

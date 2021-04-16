@@ -11,7 +11,7 @@ classes
 gen-external-apklibs
 *.properties
 .DS_Store
-.gradle
+.gradle/
 build/
 *.apk
 *.hprof
