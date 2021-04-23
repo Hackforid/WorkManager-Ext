@@ -25,6 +25,9 @@ abstract class ConstraintWorker(appContext: Context, params: WorkerParameters) :
 
 
         ConstraintManager.registerWorker(this@ConstraintWorker, constrains)
+        if (!mLock.isLocked) {
+            mLock.lock()
+        }
 
         mLock.withLock {
         }

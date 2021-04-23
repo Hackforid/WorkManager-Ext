@@ -15,6 +15,6 @@ class SampleWorker(context: Context, workerParams: WorkerParameters) :
         Thread.sleep(5000);
         Log.i("Sample", "do actual work at ${Thread.currentThread().name} in " + this.javaClass.name)
         Log.i("Sample", "I'm work")
-        return Result.retry()
+        return Result.success()
     }
 }

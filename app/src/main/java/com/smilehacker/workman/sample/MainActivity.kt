@@ -3,6 +3,7 @@ package com.smilehacker.workman.sample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
@@ -25,23 +26,23 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         WorkManager.getInstance(this)
-            .enqueue(request)
+            .enqueueUniqueWork(SampleConstraintWorker::class.java.name, ExistingWorkPolicy.REPLACE, request)
 
-        val request1 = OneTimeWorkRequestBuilder<SampleWorker>()
-            .build()
-
-        WorkManager.getInstance(this)
-            .enqueue(request1)
-
-        val request2 = OneTimeWorkRequestBuilder<JavaWorker>()
-            .build()
-
-        WorkManager.getInstance(this)
-            .enqueue(request2)
-
-
-        WorkManager.getInstance(this)
-            .enqueue(OneTimeWorkRequestBuilder<SampleWaitConstraintWorker>().build())
+//        val request1 = OneTimeWorkRequestBuilder<SampleWorker>()
+//            .build()
+//
+//        WorkManager.getInstance(this)
+//            .enqueue(request1)
+//
+//        val request2 = OneTimeWorkRequestBuilder<JavaWorker>()
+//            .build()
+//
+//        WorkManager.getInstance(this)
+//            .enqueue(request2)
+//
+//
+//        WorkManager.getInstance(this)
+//            .enqueue(OneTimeWorkRequestBuilder<SampleWaitConstraintWorker>().build())
     }
 
     private fun initWorker() {
