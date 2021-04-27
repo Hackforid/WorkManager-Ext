@@ -40,6 +40,12 @@ abstract class ConstraintWorker(appContext: Context, params: WorkerParameters) :
     abstract suspend fun doActualWork(): Result
 
     fun continueWork() {
-        mLock.unlock()
+        if (mLock.isLocked) {
+            try {
+                mLock.unlock()
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
+        }
     }
 }
