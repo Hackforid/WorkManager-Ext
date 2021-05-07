@@ -23,7 +23,7 @@ object ConstraintManager {
                     mWorkerConstraints.forEach { entry ->
                         if (entry.value[constraintController.javaClass] != null) {
                             if (isConstrained(entry.value)) {
-                                entry.key.continueWork()
+                                entry.key?.continueWork()
                             }
                         }
                     }
